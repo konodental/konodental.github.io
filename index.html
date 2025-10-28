@@ -2,10 +2,84 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>私のWebサイト</title>
+  <title>小牧市のいいところ</title>
+  <style>
+    body {
+      font-family: "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
+      background-color: #f8fafc;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+      line-height: 1.8;
+    }
+    h1 {
+      color: #4a90e2;
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+    .spot {
+      background-color: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+    }
+    h2 {
+      color: #2c3e50;
+      font-size: 1.6em;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-  <h1>こんにちは！</h1>
-  <p>これはGitHub Pagesで作った最初のページです。</p>
+  <h1>小牧市のいいところ</h1>
+
+  <div class="spot">
+    <h2>小牧山城</h2>
+    <p>織田信長が築いた歴史あるお城。展望台からの眺めが絶景です。</p>
+    <p><a href="https://www.google.com/maps?q=小牧山城" target="_blank">Googleマップで見る</a></p>
+  </div>
+
+  <div class="spot">
+    <h2>田県神社</h2>
+    <p>五穀豊穣と縁結びで知られる神社。毎年3月の豊年祭は多くの観光客で賑わいます。</p>
+    <p><a href="https://www.google.com/maps?q=田県神社" target="_blank">Googleマップで見る</a></p>
+  </div>
+
+  <div class="spot">
+    <h2>間々乳観音</h2>
+    <p>母乳・安産のご利益があるとされるお寺。全国から参拝者が訪れます。</p>
+    <p><a href="https://www.google.com/maps?q=間々乳観音" target="_blank">Googleマップで見る</a></p>
+  </div>
+
+  <footer>
+    <p>訪問者数：<span id="counter">読み込み中...</span></p>
+    <p>© 2025 小牧市のいいところ</p>
+  </footer>
+
+  <script>
+    // 無料のカウンターAPI（CountAPI）を利用
+    fetch('https://api.countapi.xyz/hit/komaki-city-site/visits')
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('counter').textContent = data.value + '人';
+      })
+      .catch(() => {
+        document.getElementById('counter').textContent = '取得できません';
+      });
+  </script>
 </body>
 </html>

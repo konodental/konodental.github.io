@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>小牧市クイズ</title>
+  <style>
+    body {
+      font-family: "Hiragino Maru Gothic ProN", "Rounded Mplus 1c", sans-serif;
+      background-color: #f7f9fb;
+      color: #333;
+      text-align: center;
+      padding: 40px;
+    }
+    h1 {
+      color: #4a90e2;
+    }
+    .quiz {
+      margin: 20px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    button {
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #357ab8;
+    }
+    .result {
+      font-size: 1.3em;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+    a {
+      color: #007acc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>小牧市クイズ！</h1>
+  <form id="quizForm" class="quiz">
+    <div>
+      <p>① 小牧市の有名な山は？</p>
+      <label><input type="radio" name="q1" value="A"> 犬山山</label><br>
+      <label><input type="radio" name="q1" value="B"> 小牧山</label><br>
+      <label><input type="radio" name="q1" value="C"> 春日井山</label>
+    </div>
+    <hr>
+    <div>
+      <p>② 小牧市の有名なお祭りは？</p>
+      <label><input type="radio" name="q2" value="A"> 豊年祭</label><br>
+      <label><input type="radio" name="q2" value="B"> 七夕まつり</label><br>
+      <label><input type="radio" name="q2" value="C"> 雪まつり</label>
+    </div>
+    <hr>
+    <div>
+      <p>③ 小牧市にある神社は？</p>
+      <label><input type="radio" name="q3" value="A"> 熱田神宮</label><br>
+      <label><input type="radio" name="q3" value="B"> 田県神社</label><br>
+      <label><input type="radio" name="q3" value="C"> 伊勢神宮</label>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">回答する</button>
+  </form>
+
+  <div id="result" class="result"></div>
+
+  <p><a href="index.html">← トップページに戻る</a></p>
+
+  <script>
+    function checkAnswers() {
+      const answers = { q1: "B", q2: "A", q3: "B" }; // 正解
+      let score = 0;
+      for (let i = 1; i <= 3; i++) {
+        const q = document.querySelector(`input[name="q${i}"]:checked`);
+        if (!q) {
+          alert("すべての問題に答えてください！");
+          return;
+        }
+        if (q.value === answers[`q${i}`]) score++;
+      }
+      document.getElementById("result").textContent = `あなたの正解数は ${score} / 3 です！🎉`;
+    }
+  </script>
+</body>
+</html>
